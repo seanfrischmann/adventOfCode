@@ -1,4 +1,4 @@
-data = open('testData','r')
+data = open('testData.txt','r')
 data = data.read()
 
 floor = 0
@@ -19,3 +19,4 @@ for x in data:
         position += 1
 
 print (position)
+print (floor)

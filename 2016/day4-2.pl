@@ -6,36 +6,7 @@ use Data::Dumper qw(Dumper);
 use File::Slurp;
 
 my $file = read_file('puzzle4');
-my $test = "qzmt-zixmtkozy-ivhz-343[abcde]";
 my $result;
-my %input = (
-    'a' => 'b',
-    'b' => 'c',
-    'c' => 'd',
-    'd' => 'e',
-    'e' => 'f',
-    'f' => 'g',
-    'g' => 'h',
-    'h' => 'i',
-    'i' => 'j',
-    'j' => 'k',
-    'k' => 'l',
-    'l' => 'm',
-    'm' => 'n',
-    'n' => 'o',
-    'o' => 'p',
-    'p' => 'q',
-    'q' => 'r',
-    'r' => 's',
-    's' => 't',
-    't' => 'u',
-    'u' => 'v',
-    'v' => 'w',
-    'w' => 'x',
-    'x' => 'y',
-    'y' => 'z',
-    'z' => 'a',
-);
 
 foreach (split(/\n/, $file)) {
     chomp;
@@ -58,9 +29,8 @@ foreach (split(/\n/, $file)) {
             if ($char eq '-') {
                 $roomName .= ' ';
             } else {
-                for (my $i = 0; $i < $id; $i++) {
-                    $char = $input{$char};
-                }
+                my $charCode = (ord($char) - ord('a') + $id) % 26;
+                $char = chr($charCode + ord('a'));
 
                 $roomName .= $char;
             }
